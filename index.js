@@ -2,7 +2,7 @@
 const fs = require('fs/promises');
 async function readFileAsync(filePath) {
   try {
-    const content = await fs.readFile(filePath, 'utf-8');
+    const content = await fs.readFile(filePath);
     return content;
   } catch (error) {
     return `Error reading file: ${error.message}`;
@@ -10,17 +10,15 @@ async function readFileAsync(filePath) {
 }
 async function writeFileAsync(filePath, content) {
   try {
-    await fs.writeFile(filePath, content, 'utf-8');
+    await fs.writeFile(filePath, content);
     return 'File successfully written';
   } catch (error) {
     return `Error writing to file: ${error.message}`;
   }
 }
 
-module.exports = { readFileAsync, writeFileAsync };
 
 
-const { readFileAsync, writeFileAsync } = require('./fileOperations');
 
 async function processFiles() {
   try {
